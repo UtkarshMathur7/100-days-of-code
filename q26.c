@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main(){
+    int n, var = 1;
+    printf("Enter the value of n: \n");
+    scanf("%d", &n);
+    for (var=1; var<=n; var++){
+        printf("%d  ", var);
+    }
+    return 0;
+}
