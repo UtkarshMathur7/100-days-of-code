@@ -1,34 +1,32 @@
-/* Program: Print all substrings of a string
-   Made simple like a 1st year student */
 #include <stdio.h>
-#include <string.h>
+
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+};
 
 int main() {
-    char str[200];
-    int n, i, j, k;
+    struct Student s;        // normal structure variable
+    struct Student *p;       // pointer to structure
 
-    printf("Enter a string: ");
-    if (fgets(str, sizeof(str), stdin) == NULL) return 0;
+    p = &s;                  // p stores address of s
 
-    /* remove trailing newline if present */
-    n = strlen(str);
-    if (n > 0 && str[n-1] == '\n') {
-        str[n-1] = '\0';
-        n--;
-    }
+    // modifying structure members using pointer and -> operator
+    printf("Enter roll number: ");
+    scanf("%d", &p->roll);
 
-    printf("All substrings:\n");
-    /* start index i from 0 to n-1 */
-    for (i = 0; i < n; i++) {
-        /* length of substring: j (1 to n-i) */
-        for (j = 1; j <= n - i; j++) {
-            /* print substring starting at i of length j */
-            for (k = 0; k < j; k++) {
-                putchar(str[i + k]);
-            }
-            putchar('\n');
-        }
-    }
+    printf("Enter name: ");
+    scanf("%s", p->name);
+
+    printf("Enter marks: ");
+    scanf("%f", &p->marks);
+
+    // displaying data using pointer
+    printf("\n--- Student Details ---\n");
+    printf("Roll : %d\n", p->roll);
+    printf("Name : %s\n", p->name);
+    printf("Marks: %.2f\n", p->marks);
 
     return 0;
 }
